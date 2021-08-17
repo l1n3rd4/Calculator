@@ -29,6 +29,14 @@ class CalcController{
         this._displayCalculatorEl.innerHTML = value;
     }
 
+    get displayDate(){
+        return this._dateEl.innerHTML;
+    }
+
+    set displayDate(value){
+        this._dateEl.innerHTML = value;
+    }
+
     get currentDate(){
         return new Date();
     }
