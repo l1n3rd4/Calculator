@@ -16,6 +16,12 @@ class CalcController{
         }, 1000);
     }
 
+    addEventListenerAll(element, events, fn){
+        events.split(' ').forEach((event) => {
+            element.addEventListener(event, fn, false);
+        });
+    }
+
     setDisplayDateTime(){
         this.displayDate = this.currentDate.toLocaleDateString(this._locale);
         this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
