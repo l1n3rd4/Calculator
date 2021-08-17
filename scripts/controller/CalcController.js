@@ -22,6 +22,16 @@ class CalcController{
         });
     }
 
+    initButtonsEvents(){
+        let buttons = document.querySelectorAll("#buttons > g, #parts > g");
+    
+        buttons.forEach((btn, index) => {
+            this.addEventListenerAll(btn, "click drag", (element) => {
+                console.log("a");
+            });
+        });
+    }
+
     setDisplayDateTime(){
         this.displayDate = this.currentDate.toLocaleDateString(this._locale);
         this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
