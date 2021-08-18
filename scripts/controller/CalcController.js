@@ -147,4 +147,13 @@ class CalcController{
     set currentDate(value){
         this._currentDate = value;
     }
+
+    get operation(){
+        return this._operation;
+    }
+
+    set operation(value){
+        this._operation = value;
+    }
+
 }
