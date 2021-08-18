@@ -34,77 +34,82 @@ class CalcController{
     }
 
     ClearEntry(){
-        return this.operation.pop();
+        return this._operation.pop();
     }
 
     getLastOperation(){
-        return this.operation[this._operation.length - 1];
+        return this._operation[this._operation.length - 1];
     }
     
     isOperator(value){
         return (["/", "%", "*", "+", "-", "="].indexOf(value) > -1)
     }
 
-    addOperation(value){
-        value = value.replace("btn-","");
-        //this.operation = value;
+    setLastOperation(value){
+        this._operation[this._operation.length - 1] = value;
+    }
 
+    addOperation(value){
         if(isNaN(this.getLastOperation())){
             if(this.isOperator(value)){
-
+                this.setLastOperation(value);
             } else if (isNaN(value)){
 
             } else {
-                this.operation = value;
+                this._operation.push(value);
             }
+        }else if(this.isOperator(value)){
+            this._operation.push(value);
         } else {
-            let newValue = this.getLastOperation() + value;
-            this.operation = newValue;
+            let newValue = this.getLastOperation().toString() + value.toString();
+            this.setLastOperation(newValue);
         }
 
 
-        console.log(this.operation);
+        console.log(this._operation);
     }
 
     execbtn(value){
+        value = value.replace('btn-', '');
+
         switch(value){
-            case 'btn-0':
-            case 'btn-1':
-            case 'btn-2':
-            case 'btn-3':
-            case 'btn-4':
-            case 'btn-5':
-            case 'btn-6':
-            case 'btn-7':
-            case 'btn-8':
-            case 'btn-9':
-                this.addOperation(value);
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                this.addOperation(parseInt(value));
                 break;
-            case 'btn-ponto':
+            case 'ponto':
                 this.addOperation(".");
                 break;
-            case 'btn-igual':
+            case 'igual':
                 this.addOperation("=");
                 break;
-            case 'btn-soma':
+            case 'soma':
                 this.addOperation("+");
                 break;
-            case 'btn-porcento':
+            case 'porcento':
                 this.addOperation("%");
                 break;
-            case 'btn-subtracao':
+            case 'subtracao':
                 this.addOperation("-");
                 break;
-            case 'btn-multiplicacao':
+            case 'multiplicacao':
                 this.addOperation("*");
                 break;
-            case 'btn-divisao':
+            case 'divisao':
                 this.addOperation("/");
                 break;
-            case 'btn-ac':
+            case 'ac':
                 this.ClearAll();
                 break;
-            case 'btn-ce':
+            case 'ce':
                 this.ClearEntry();
                 break;
             default:
@@ -164,14 +169,4 @@ class CalcController{
     set currentDate(value){
         this._currentDate = value;
     }
-
-    get operation(){
-        return this._operation;
-    }
-
-    set operation(value){
-        console.log("teste",value);
-        this._operation.push(value);
-    }
-
 }
