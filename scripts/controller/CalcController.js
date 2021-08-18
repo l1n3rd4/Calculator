@@ -53,10 +53,14 @@ class CalcController{
         this._operation.push(value);
 
         if(this._operation.length > 3){
-            let lastNumber =this._operation.pop();
-
-            
+            this.Calc();
         }
+    }
+
+    Calc(){
+        let lastNumber = this._operation.pop();
+        let result = eval(this._operation.join(""));
+        this._operation = [result, lastNumber];
     }
 
     addOperation(value){
@@ -79,7 +83,7 @@ class CalcController{
 
     execbtn(value){
         value = value.replace('btn-', '');
-
+        
         switch(value){
             case '0':
             case '1':
