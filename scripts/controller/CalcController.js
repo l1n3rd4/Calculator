@@ -31,6 +31,10 @@ class CalcController{
             this.addEventListenerAll(btn, "click drag", (element) => {
                 console.log(btn.className.baseVal);
             });
+            
+            this.addEventListenerAll(btn, "mouseover mouseup mousedown", (element) => {
+                btn.style.cursor = "pointer"
+            });
         });
     }
 
