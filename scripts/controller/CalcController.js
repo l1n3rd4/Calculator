@@ -33,7 +33,9 @@ class CalcController{
         this.operation = [];
     }
 
-    Clear
+    ClearEntry(){
+        return this.operation.pop();
+    }
 
     execbtn(value){
         switch(value){
@@ -86,10 +88,10 @@ class CalcController{
                 console.log("q");
                 break;
             case 'btn-ac':
-                console.log("q");
+                this.ClearAll();
                 break;
             case 'btn-ce':
-                console.log("q");
+                this.ClearEntry();
                 break;
             default:
                 this.setError();
