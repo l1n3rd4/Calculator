@@ -14,6 +14,8 @@ class CalcController{
         setInterval(() => {
             this.setDisplayDateTime();
         }, 1000);
+
+        this.initButtonsEvents();
     }
 
     addEventListenerAll(element, events, fn){
@@ -27,7 +29,7 @@ class CalcController{
     
         buttons.forEach((btn, index) => {
             this.addEventListenerAll(btn, "click drag", (element) => {
-                console.log("a");
+                console.log(btn.className.baseVal);
             });
         });
     }
