@@ -30,41 +30,34 @@ class CalcController{
     }
 
     ClearAll(){
-        this.operation = [];
+        this._operation = [];
     }
 
     ClearEntry(){
         return this.operation.pop();
     }
 
+    addOperation(value){
+        this.operation = value.replace("btn-","");
+
+        
+
+        console.log(this.operation);
+    }
+
     execbtn(value){
         switch(value){
+            case 'btn-0':
             case 'btn-1':
-                console.log("q");
-                break;
             case 'btn-2':
-                console.log("q");
-                break;
             case 'btn-3':
-                console.log("q");
-                break;
             case 'btn-4':
-                console.log("q");
-                break;
             case 'btn-5':
-                console.log("q");
-                break;
             case 'btn-6':
-                console.log("q");
-                break;
             case 'btn-7':
-                console.log("q");
-                break;
             case 'btn-8':
-                console.log("q");
-                break;
             case 'btn-9':
-                console.log("q");
+                this.addOperation(value);
                 break;
             case 'btn-ponto':
                 console.log("q");
@@ -105,7 +98,6 @@ class CalcController{
         buttons.forEach((btn, index) => {
             this.addEventListenerAll(btn, "click drag", (element) => {
                 let Textbtn = btn.className.baseVal;
-
                 this.execbtn(Textbtn);
             });
             
@@ -157,7 +149,7 @@ class CalcController{
     }
 
     set operation(value){
-        this._operation = value;
+        this._operation.push(value);
     }
 
 }
