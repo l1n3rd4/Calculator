@@ -61,29 +61,37 @@ class CalcController{
         let lastNumber = this._operation.pop();
         let result = eval(this._operation.join(""));
         this._operation = [result, lastNumber];
+        this.updateDisplay();
     }
 
     addOperation(value){
         if(isNaN(this.getLastOperation())){
             if(this.isOperator(value)){
                 this.setLastOperation(value);
+                this.updateDisplay();
             } else if (isNaN(value)){
-
+                this.updateDisplay();
             } else {
                 this.pushOperation(value);
+                this.updateDisplay();
             }
         }else if(this.isOperator(value)){
             this.pushOperation(value);
         } else {
             let newValue = this.getLastOperation().toString() + value.toString();
             this.setLastOperation(newValue);
+            this.updateDisplay();
         }
         console.log(this._operation);
     }
 
+    updateDisplay(){
+        this.displayCalculatorEl = this._operation.join(" ");
+    }
+
     execbtn(value){
         value = value.replace('btn-', '');
-        
+
         switch(value){
             case '0':
             case '1':
