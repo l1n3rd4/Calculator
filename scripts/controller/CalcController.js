@@ -24,12 +24,73 @@ class CalcController{
         });
     }
 
+    execbtn(value){
+        switch(value){
+            case 'btn-1':
+                console.log("q");
+                break;
+            case 'btn-2':
+                console.log("q");
+                break;
+            case 'btn-3':
+                console.log("q");
+                break;
+            case 'btn-4':
+                console.log("q");
+                break;
+            case 'btn-5':
+                console.log("q");
+                break;
+            case 'btn-6':
+                console.log("q");
+                break;
+            case 'btn-7':
+                console.log("q");
+                break;
+            case 'btn-8':
+                console.log("q");
+                break;
+            case 'btn-9':
+                console.log("q");
+                break;
+            case 'btn-ponto':
+                console.log("q");
+                break;
+            case 'btn-igual':
+                console.log("q");
+                break;
+            case 'btn-soma':
+                console.log("q");
+                break;
+            case 'btn-porcento':
+                console.log("q");
+                break;
+            case 'btn-subtracao':
+                console.log("q");
+                break;
+            case 'btn-multiplicacao':
+                console.log("q");
+                break;
+            case 'btn-divisao':
+                console.log("q");
+                break;
+            case 'btn-ac':
+                console.log("q");
+                break;
+            case 'btn-ce':
+                console.log("q");
+                break;
+        }
+    }
+
     initButtonsEvents(){
         let buttons = document.querySelectorAll("#buttons > g, #parts > g");
     
         buttons.forEach((btn, index) => {
             this.addEventListenerAll(btn, "click drag", (element) => {
-                console.log(btn.className.baseVal);
+                let Textbtn = btn.className.baseVal;
+
+                this.execbtn(Textbtn);
             });
             
             this.addEventListenerAll(btn, "mouseover mouseup mousedown", (element) => {
