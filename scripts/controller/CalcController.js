@@ -33,6 +33,8 @@ class CalcController{
         this.operation = [];
     }
 
+    Clear
+
     execbtn(value){
         switch(value){
             case 'btn-1':
