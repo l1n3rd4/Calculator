@@ -24,6 +24,10 @@ class CalcController{
         });
     }
 
+    setError(){
+        this.displayCalculatorEl = "Error";
+    }
+
     execbtn(value){
         switch(value){
             case 'btn-1':
@@ -79,6 +83,9 @@ class CalcController{
                 break;
             case 'btn-ce':
                 console.log("q");
+                break;
+            default:
+                this.setError();
                 break;
         }
     }
