@@ -31,10 +31,13 @@ class CalcController{
 
     ClearAll(){
         this._operation = [];
+        this.updateDisplay();
     }
 
     ClearEntry(){
-        return this._operation.pop();
+        let lastItem = this._operation.pop();
+        this.updateDisplay();
+        return lastItem;
     }
 
     getLastOperation(){
@@ -58,9 +61,9 @@ class CalcController{
     }
 
     Calc(){
-        let lastNumber = this._operation.pop();
+        let lastItem = this._operation.pop();
         let result = eval(this._operation.join(""));
-        this._operation = [result, lastNumber];
+        this._operation = [result, lastItem];
         this.updateDisplay();
     }
 
@@ -77,12 +80,12 @@ class CalcController{
             }
         }else if(this.isOperator(value)){
             this.pushOperation(value);
+            this.updateDisplay();
         } else {
             let newValue = this.getLastOperation().toString() + value.toString();
             this.setLastOperation(newValue);
             this.updateDisplay();
         }
-        console.log(this._operation);
     }
 
     updateDisplay(){
