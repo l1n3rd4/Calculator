@@ -37,11 +37,15 @@ class CalcController{
         return this.operation.pop();
     }
 
+    getLastOperation(){
+        return this.operation[this._operation.length - 1];
+    }
+    
     addOperation(value){
         this.operation = value.replace("btn-","");
 
-        
 
+        
         console.log(this.operation);
     }
 
