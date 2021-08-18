@@ -41,11 +41,28 @@ class CalcController{
         return this.operation[this._operation.length - 1];
     }
     
+    isOperator(value){
+        return (["/", "%", "*", "+", "-", "="].indexOf(value) > -1)
+    }
+
     addOperation(value){
-        this.operation = value.replace("btn-","");
+        value = value.replace("btn-","");
+        //this.operation = value;
+
+        if(isNaN(this.getLastOperation())){
+            if(this.isOperator(value)){
+
+            } else if (isNaN(value)){
+
+            } else {
+                this.operation = value;
+            }
+        } else {
+            let newValue = this.getLastOperation() + value;
+            this.operation = newValue;
+        }
 
 
-        
         console.log(this.operation);
     }
 
@@ -64,25 +81,25 @@ class CalcController{
                 this.addOperation(value);
                 break;
             case 'btn-ponto':
-                console.log("q");
+                this.addOperation(".");
                 break;
             case 'btn-igual':
-                console.log("q");
+                this.addOperation("=");
                 break;
             case 'btn-soma':
-                console.log("q");
+                this.addOperation("+");
                 break;
             case 'btn-porcento':
-                console.log("q");
+                this.addOperation("%");
                 break;
             case 'btn-subtracao':
-                console.log("q");
+                this.addOperation("-");
                 break;
             case 'btn-multiplicacao':
-                console.log("q");
+                this.addOperation("*");
                 break;
             case 'btn-divisao':
-                console.log("q");
+                this.addOperation("/");
                 break;
             case 'btn-ac':
                 this.ClearAll();
@@ -153,6 +170,7 @@ class CalcController{
     }
 
     set operation(value){
+        console.log("teste",value);
         this._operation.push(value);
     }
 
