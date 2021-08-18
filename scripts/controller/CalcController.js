@@ -1,5 +1,6 @@
 class CalcController{
     constructor(){
+        this._operation = [];
         this._locale = "pt-BR"
         this._displayCalculatorEl = document.querySelector("#display");
         this._dateEl = document.querySelector("#data");
@@ -26,6 +27,10 @@ class CalcController{
 
     setError(){
         this.displayCalculatorEl = "Error";
+    }
+
+    ClearAll(){
+        this.operation = [];
     }
 
     execbtn(value){
