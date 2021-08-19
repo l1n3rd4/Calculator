@@ -17,6 +17,11 @@ class CalcController{
         }, 1000);
 
         this.initButtonsEvents();
+        this.setZeroToDisplay();
+    }
+
+    setZeroToDisplay(){
+        this.displayCalculatorEl = 0;
     }
 
     addEventListenerAll(element, events, fn){
@@ -31,12 +36,18 @@ class CalcController{
 
     ClearAll(){
         this._operation = [];
-        this.updateDisplay();
+        this.setZeroToDisplay();
     }
 
     ClearEntry(){
         let lastItem = this._operation.pop();
-        this.updateDisplay();
+
+        if(this._operation.length === 0){
+            this.setZeroToDisplay();
+        } else {
+            this.updateDisplay();
+        } 
+        
         return lastItem;
     }
 
