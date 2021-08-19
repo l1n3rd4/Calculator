@@ -74,7 +74,13 @@ class CalcController{
     Calc(){
         let lastItem = this._operation.pop();
         let result = eval(this._operation.join(""));
-        this._operation = [result, lastItem];
+
+        if(lastItem == "="){
+            this._operation = [result];
+        }else{
+            this._operation = [result, lastItem];
+        }
+        
         this.updateDisplay();
     }
 
