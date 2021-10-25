@@ -99,7 +99,14 @@ class CalcController{
             this.pushOperation(value);
             this.updateDisplay();
         } else {
-            let newValue = this.getLastOperation().toString() + value.toString();
+            let newValue = '';
+
+            if(this.getLastOperation() != null){
+                newValue = this.getLastOperation().toString() + value.toString();
+            } else{
+                newValue = '0' + value.toString();
+            }
+            
             this.setLastOperation(newValue);
             this.updateDisplay();
         }
@@ -123,7 +130,7 @@ class CalcController{
             case '7':
             case '8':
             case '9':
-                this.addOperation(parseInt(value));
+                this.addOperation(parseFloat(value));
                 break;
             case 'ponto':
                 this.addOperation(".");
